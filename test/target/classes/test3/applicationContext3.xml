@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="helloBoy" class="test3.Boy" p:name="홍길동"/>
+	<bean id="helloGirl" class="test3.Girl" p:name="홍길순"/>
+		<!-- 메소드를 통해 값 주입 -->
+		<!-- <property name="name" value="홍길동"/>-->	
+	<!-- </bean> -->
+
+	
+	<bean name="helloBean,hello2 hello3;hello4" scope="prototype" class="test3.HelloBeanBoy"
+	c:msg="추운 겨울입니다." c:age="20" c:helloBoy-ref="helloBoy"/>
+
+	<bean name="helloBeanGirl" class="test3.HelloBeanGirl"
+	c:msg="더 추운 겨울입니다." c:age="25" c:helloGirl-ref="helloGirl"/>
+		<!-- 생성자를 통해서 값 주입 -->
+		
+	<!-- 
+		<constructor-arg>
+			<value>추운 겨울입니다.</value>
+		</constructor-arg>
+		
+		<constructor-arg>
+			<value>20</value>
+		</constructor-arg>
+
+		<constructor-arg>
+			<ref bean="helloBoy"/>
+		</constructor-arg>
+	</bean>
+	 -->		
+
+<!-- 	<bean id="helloBoy2" class="test3.Boy" p:name="홍길순"/>
+ -->		<!-- 
+		<property name="name" value="홍길순"/> 
+			</bean>
+		-->
+
+
+
+
+</beans>
