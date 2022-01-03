@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean id="student2" class="test7.Student">
+		<constructor-arg value="자바" />
+		<constructor-arg value="10" />
+		<constructor-arg>
+			<list>
+				<value>장미꽃 가꾸기</value>
+				<value>꽃 심기</value>
+			</list>
+		</constructor-arg>
+
+		<property name="height" value="160" />
+		<property name="weight" value="50" />
+	</bean>
+
+</beans>

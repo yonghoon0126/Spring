@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- 자바 환경파일을 인식 -->
+	<context:annotation-config/><!-- student1 -->
+	<bean class="test6.ApplicationConfig"/>
+	
+	<bean id="student2" class="test6.Student">
+		<constructor-arg value="새해2022년"/>
+		<constructor-arg value="10"/>
+		<constructor-arg>
+			<list>
+				<value>계획표 짜기</value>
+				<value>계획표 실천하기</value>
+			</list>
+		</constructor-arg>	
+
+		<property name="height" value="185"/>	
+		<property name="weight" value="65"/>	
+	</bean>
+
+</beans>
