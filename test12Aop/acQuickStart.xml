@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="writeArticleService" class="test12Aop.WriteArticleServiceImpl">
+		<constructor-arg>
+			<ref bean="articleDao"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="articleDao" class="test12Aop.MySQLArticleDao"/>
+	
+	<!-- advice 클래스를 빈으로 등록 -->
+	<bean id="performanceTraceAdvice" class="test12Aop.ProfilingAdvice"/>
+	
+	<!-- aspect 설정 -->
+	<aop:config>
+		<aop:aspect id="traceAspect1" ref="performanceTraceAdvice">
+			<aop:pointcut id="publicMethod"
+				expression="execution(public * test12Aop..*(..))"/>
+			<aop:around pointcut-ref="publicMethod" method="trace"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>
