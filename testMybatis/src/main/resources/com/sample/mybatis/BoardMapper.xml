@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mybatis mapper 설정파일 데이터베이스에 맵핑할 쿼리와 쿼리의 결과값으로 맵핑 될 클래스를 기술한다. 파라미터는 
+	#{}로 사용되고 이 파라미터는 실제 사용 시 맵으로 넘겨주면 키앖을 찾아 치환한다. -->
+
+<!-- 클래스(자바빈), 인터페이스 -->
+<mapper namespace="com.sample.mybatis.BoardMapper">
+
+	<select id="getZipcodeList" resultType="ZipcodeVO"
+		parameterType="String">
+
+		SELECT zipcode, sido ||' '|| gugun ||' '|| dong ||' '||ri||' '||bunji as addr1 
+			from zipcode where dong like '%' || #{area} ||'%'
+	</select>
+
+	<insert id="registUser" parameterType="UserVO">
+		insert into tab_user(
+			user_id, user_name, user_pwd, user_pwd_hint,
+			user_phone, user_zipcode, user_addr1, user_addr2, user_lastip)
+		values(
+			#{user_id}, #{user_name}, #{user_pwd}, #{user_pwd_hint},
+			#{user_pwd_answer}, #{user_gender},
+			#{user_email}, #{user_phone}, #{user_zipcode}, #{user_addr1}, #{user_addr2},
+			#{user_lastip})
+	</insert>
+
+	<select id="getUser" parameterType="UserVO" resultType="UserVO">
+		select user_id, user_name
+			from tab_user
+			where user_id = #{user_id} and user_pwd =#{user_pwd}
+	</select>
+
+	<select id="getCash" parameterType="String" resultType="Integer">
+		select * from cash
+			where name=#{name}
+	</select>
+
+	<select id="getBank" parameterType="String" resultType="Integer">
+		select * from bank
+			where name=#{name}
+	</select>
+
+	<update id="minuscash" parameterType="String">
+		update cash set money=money-1000
+			where name=#{name}
+	</update>
+
+	<update id="plusbank" parameterType="String">
+		update bank set money=money+1000
+			where name=#{name}
+	</update>
+
+
+
+</mapper>
