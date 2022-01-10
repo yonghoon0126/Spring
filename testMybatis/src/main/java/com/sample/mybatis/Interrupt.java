@@ -25,9 +25,7 @@ public class Interrupt {
 		for (Object obj : args) {
 
 			if (obj instanceof UserVO) {
-
 				logger.info("비밀번호 : " + ((UserVO) obj).getUser_pwd());
-
 			}
 		}
 	}

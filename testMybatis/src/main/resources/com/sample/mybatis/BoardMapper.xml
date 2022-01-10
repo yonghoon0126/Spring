@@ -27,6 +27,8 @@
 			#{user_lastip})
 	</insert>
 
+
+
 	<select id="getUser" parameterType="UserVO" resultType="UserVO">
 		select user_id, user_name
 			from tab_user
@@ -42,6 +44,8 @@
 		select * from bank
 			where name=#{name}
 	</select>
+
+
 
 	<update id="minuscash" parameterType="String">
 		update cash set money=money-1000

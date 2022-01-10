@@ -46,6 +46,16 @@
 		</tr>
 		
 		<tr>
+			<td>이름</td>
+			<td>
+				<input type="text" name="user_name"	value="${userVO.user_name}">
+				<div id="user_id_msg">
+				  <form:errors path="user_name"/>
+			</div>
+			</td>
+  		</tr>
+		
+		<tr>
 			<td>비밀번호</td>
 			<td><input type="password" name="user_pwd" value="${userVO.user_pwd}">
 				<div id="user_id_msg">
